@@ -63,6 +63,7 @@ header {
   justify-content: center;
   background-color: rgb(26, 26, 26);
   padding: 10px 0;
+  transition: transform 0.5s ease-out;
 }
 header .content {
   width: var(--content-size);
@@ -96,7 +97,7 @@ header .content .logo-container h1 span {
     display: none;
   }
 }
-header .content .button-container button {
+header .content .button-container button:first-child {
   font-size: 18px;
   background-color: rgb(184, 31, 31);
   color: white;
@@ -104,6 +105,37 @@ header .content .button-container button {
   border: 3px solid rgb(220.9720930233, 53.0279069767, 53.0279069767);
   border-radius: 5px;
   box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
+  cursor: pointer;
+  margin-right: 20px;
+}
+header .content .button-container button:nth-child(2) {
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.temporary-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.temporary-button .content {
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+  width: var(--content-size);
+}
+.temporary-button .content button {
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -120,6 +152,7 @@ main .content {
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 252px 252px 252px;
   gap: 20px;
+  margin-bottom: 10px;
 }
 @media (max-width: 780px) {
   main .content {

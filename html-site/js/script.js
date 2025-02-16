@@ -22,3 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     animateTarget();
 });
+
+let toggleButtonUp = document.querySelector(".toggle-button-up");
+let toggleButtonDown = document.querySelector(".toggle-button-down");
+let toggleButtonSection = document.querySelector(".temporary-button");
+let header = document.querySelector("header");
+
+
+toggleButtonUp.addEventListener("click", () => {
+    header.style.display = "none";
+    toggleButtonSection.style.display = "flex";
+});
+
+toggleButtonDown.addEventListener("click", () => {
+    header.style.display = "flex";
+    toggleButtonSection.style.display = "none";
+});

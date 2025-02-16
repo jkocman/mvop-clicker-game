@@ -8,6 +8,7 @@ header{
     justify-content: center;
     background-color: rgb(26, 26, 26);
     padding: 10px 0;
+    transition: transform 0.5s ease-out;
     .content{
         width: var(--content-size);
         display: flex;
@@ -36,7 +37,7 @@ header{
             }
         }
         .button-container{
-            button{
+            button:first-child{
                 font-size: map.get($font-sizes, "normal");
                 background-color: map.get($background-colors, "tertiary");
                 color: map.get($foreground-colors, "primary");
@@ -45,7 +46,38 @@ header{
                 border-radius: 5px;
                 box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
                 cursor: pointer;
+                margin-right: 20px;
             }
+            button:nth-child(2){
+                font-size: map.get($font-sizes, "small");
+                padding: 5px 10px;
+                background-color: transparent;
+                color: map.get($foreground-colors, "primary");
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.temporary-button{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    .content{
+        margin-top: 10px;
+        display: flex;
+        justify-content: end;
+        width: var(--content-size);
+        button{
+            font-size: map.get($font-sizes, "small");
+            padding: 5px 10px;
+            background-color: transparent;
+            color: map.get($foreground-colors, "primary");
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     }
 }
