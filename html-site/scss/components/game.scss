@@ -1,0 +1,36 @@
+@use "../variables/variables" as *;
+@use "../mixins/target" as target;
+@use "../mixins/shop" as shop;
+@use "../mixins/achievments" as achievments;
+
+main{
+    display: flex;
+    align-items: center;
+    height: auto;
+    justify-content: center;
+    .content{
+        margin-top: 12px;
+        width: var(--content-size);
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 252px 252px 252px;
+        gap: 20px;
+
+        @media (max-width: 780px){
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        @media (max-height: 910px){
+            grid-template-rows: 230px 230px 230px;
+        }
+        @media (max-height: 835px){
+            grid-template-rows: 210px 210px 210px;
+        }
+
+        @include target.target-section();
+        @include shop.shop-section();
+        @include achievments.achievment-section();
+
+    }
+}
