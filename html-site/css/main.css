@@ -129,6 +129,11 @@ header .content .button-container button:nth-child(2) {
   justify-content: end;
   width: var(--content-size);
 }
+@media (max-width: 1445px) {
+  .temporary-button .content {
+    margin: 0 20px;
+  }
+}
 .temporary-button .content button {
   font-size: 16px;
   padding: 5px 10px;

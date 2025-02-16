@@ -70,6 +70,9 @@ header{
         display: flex;
         justify-content: end;
         width: var(--content-size);
+        @media(max-width: 1445px){
+            margin: 0 20px;
+        }
         button{
             font-size: map.get($font-sizes, "small");
             padding: 5px 10px;
