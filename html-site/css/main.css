@@ -92,7 +92,7 @@ header .content .logo-container h1 {
 header .content .logo-container h1 span {
   color: rgb(184, 31, 31);
 }
-@media (max-width: 455px) {
+@media (max-width: 513px) {
   header .content .logo-container h1 {
     display: none;
   }
@@ -247,7 +247,7 @@ main .content .target-container .target-section .target-wrapper .figure-image {
 }
 @media (max-height: 785px) {
   main .content .target-container .target-section .target-wrapper .figure-image {
-    width: 140px;
+    width: 143px;
   }
 }
 main .content .target-container .target-section button {

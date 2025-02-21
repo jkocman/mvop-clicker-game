@@ -31,7 +31,7 @@ header{
                 span{
                     color: map.get($foreground-colors, "secondary");
                 }
-                @media(max-width: 455px){
+                @media(max-width: 513px){
                     display: none;
                 }
             }
