@@ -31,6 +31,12 @@ main{
         @media (max-height: 785px){
             grid-template-rows: 180px 180px 180px;
         }
+        @media (max-height: 695px){
+            grid-template-rows: 150px 150px 150px;
+        }
+        @media (max-height: 610px){
+            grid-template-rows: 130px 130px 130px;
+        }
 
         @include target.target-section();
         @include shop.shop-section();

@@ -36,6 +36,9 @@
             p{
                 font-size: map.get($font-sizes, "heading");
                 color: map.get($foreground-colors, "primary");
+                @media (max-height: 610px){
+                    font-size: 25px;
+                }
             }
 
             .target-wrapper{
@@ -48,6 +51,21 @@
                     left: 50%;
                     transform: translateX(-50%);
                     width: 70px;
+                    @media (max-height: 910px){
+                        width: 65px;
+                    }
+                    @media (max-height: 835px){
+                        width: 60px;
+                    }
+                    @media (max-height: 785px){
+                        width: 50px;
+                    }
+                    @media (max-height: 695px){
+                        width: 45px;
+                    }
+                    @media (max-height: 610px){
+                        width: 40px;
+                    }
                 }
         
                 .figure-image{
@@ -62,6 +80,12 @@
                     }
                     @media (max-height: 785px){
                         width: 143px;
+                    }
+                    @media (max-height: 695px){
+                        width: 113px;
+                    }
+                    @media (max-height: 610px){
+                        width: 96px;
                     }
                 }
             }
