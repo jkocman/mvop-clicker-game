@@ -1,0 +1,11 @@
+@use "sass:map";
+
+$main-font: Raleway;
+$font-sizes: ("small": 16px,"normal": 18px, "heading": 30px);
+$foreground-colors: ("primary": white, "secondary": rgb(184, 31, 31));
+$background-colors: ("primary": rgb(46, 46, 46), "secondary": rgb(26, 26, 26), "tertiary": rgb(184, 31, 31));
+
+
+:global(:root) {
+    --content-size: 90em;
+}
