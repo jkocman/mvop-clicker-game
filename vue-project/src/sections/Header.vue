@@ -31,7 +31,6 @@ import Button from "@/components/Button.vue";
 
 
 header {
-    font-family: $main-font;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,5 +72,8 @@ header {
             }
         }
     }
+}
+.temporary-button{
+    display: none;
 }
 </style>

@@ -45,3 +45,75 @@
         </section>
     </section>
 </template>
+
+<script setup lang="ts">
+
+</script>
+
+<style lang="scss" scoped>
+@use "../assets/variables" as *;
+@use "sass:map";
+
+
+.achievment-container{
+    background-color: map.get($background-colors, "secondary");
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px 1px rgba(180, 180, 180, 0.192);
+    overflow-y: auto;
+    scrollbar-width: none;
+    @media(max-width: 1445px){
+        margin-right: 20px;
+    }
+    @media(max-width: 780px){
+        margin-left: 20px;
+    }
+
+    h2{
+        text-align: center;
+        font-size: map.get($font-sizes, "heading");
+        color: map.get($foreground-colors, "primary");
+        border-bottom: 2px solid map.get($foreground-colors, "secondary");
+        padding-bottom: 5px;
+    }
+    .achievments{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        margin-top: 10px;
+        gap: 10px;
+
+        @media(max-width: 1045px){
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media(max-width: 375px){
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .achievment{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 5px;
+            div{
+                width: 45px;
+                height: 45px;
+                background-image: url("../img/achievment-questionmark.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                filter: grayscale(100%);
+            }
+            p{
+                font-size: map.get($font-sizes, "small");
+                color: map.get($foreground-colors, "primary");
+                text-align: center;
+            }
+        }
+    }
+}
+.achievment-container::-webkit-scrollbar{
+    display: none;
+}
+</style>
