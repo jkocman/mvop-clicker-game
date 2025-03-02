@@ -4,6 +4,10 @@
             <p>XP: <span>0</span></p>
             <div class="target-wrapper">
                 <img src="@/assets/img/clicker-guy.png" alt="" class="figure-image">
+                <p class="four">+4</p>
+                <p class="three">+3</p>
+                <p class="two">+2</p>
+                <p class="one">+1</p>
                 <img src="@/assets/img/target-outlined.png" alt="Target" class="target">
             </div>
             <button>Shoot</button>
@@ -105,6 +109,25 @@
                 @media (max-height: 610px){
                     width: 96px;
                 }
+            }
+            p{
+                position: absolute;
+                text-shadow: 0px 0px 10px rgb(0, 0, 0);
+                font-size: map.get($font-sizes, "nor");
+                left: 105%;
+                color: rgb(255, 255, 255);
+            }
+            .four{
+                top: 45px;
+            }
+            .three{
+                top: 145px;
+            }
+            .two{
+                top: 280px;
+            }
+            .one{
+                top: 460px;
             }
         }
 

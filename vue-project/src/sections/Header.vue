@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header v-if="isHeaderVisible">
         <section class="content">
             <section class="logo-container">
                 <img src="../assets/img/target.png" alt="">
@@ -7,21 +7,28 @@
             </section>
             <section class="button-container">
                 <Button label="Reset Game" type="main"></Button>
-                <Button class="toggle-button-up" type="secondary">
+                <Button @click="toggleHeader(false)" class="toggle-button-up" type="secondary">
                     <i class="fa-solid fa-angle-up"></i>
                 </Button>
             </section>
         </section>
     </header>
-    <section class="temporary-button">
+    <section v-if="!isHeaderVisible" class="temporary-button">
         <section class="content">
-            <Button class="toggle-button-up" type="secondary"><i class="fa-solid fa-angle-down"></i></Button>
+            <Button @click="toggleHeader(true)" class="toggle-button-up" type="secondary"><i class="fa-solid fa-angle-down"></i></Button>
         </section>
     </section>
 </template>
 
 <script setup lang="ts">
 import Button from "@/components/Button.vue";
+import { ref } from "vue";
+
+const isHeaderVisible = ref(true);
+
+const toggleHeader = (visible: boolean) => {
+    isHeaderVisible.value = visible;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -73,7 +80,19 @@ header {
         }
     }
 }
+
 .temporary-button{
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content{
+        margin-top: 10px;
+        display: flex;
+        justify-content: end;
+        width: var(--content-size);
+        @media(max-width: 1445px){
+            margin: 0 20px;
+        }
+    }
 }
 </style>

@@ -2,52 +2,27 @@
     <section class="achievment-container">
         <h2>Achievments</h2>
         <section class="achievments">
-            <section class="achievment">
-                <div></div>
-                <p>First Shot</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>New Upgrade</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>All Parts</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>Hidden</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>All Helpers</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>100k XP</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>Hidden</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>100 Of One Upgrade</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>All Upgrades</p>
-            </section>
-            <section class="achievment">
-                <div></div>
-                <p>Two Milion XP</p>
-            </section>
+            <Achievment v-for="(label, index) in labels" :key="index" :label="label"></Achievment>
         </section>
     </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import Achievment from '@/components/Achievment.vue';
 
+const labels = ref([
+    "First Shot",
+    "New Upgrade",
+    "All Parts",
+    "Hidden",
+    "All Helpers",
+    "100k XP",
+    "Hidden",
+    "100 Of One Upgrade",
+    "All Upgrades",
+    "Two Milion XP"
+]);
 </script>
 
 <style lang="scss" scoped>
@@ -87,29 +62,6 @@
         }
         @media(max-width: 375px){
             grid-template-columns: repeat(2, 1fr);
-        }
-
-        .achievment{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            gap: 5px;
-            div{
-                width: 45px;
-                height: 45px;
-                background-image: url("../img/achievment-questionmark.png");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                filter: grayscale(100%);
-            }
-            p{
-                font-size: map.get($font-sizes, "small");
-                color: map.get($foreground-colors, "primary");
-                text-align: center;
-            }
         }
     }
 }
