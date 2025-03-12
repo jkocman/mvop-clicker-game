@@ -4,12 +4,12 @@
             <img :src="image" alt="" />
             <section>
                 <h3>{{ label }}</h3>
-                <p>100 <span>XP</span></p>
+                <p>{{ price }} <span>XP</span></p>
             </section>
         </section>
         <section class="price-container">
             <button>Buy</button>
-            <p>0</p>
+            <p>{{ count }}</p>
         </section>
     </section>
 </template>
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-defineProps<{label: string, image: string | undefined}>();
+defineProps<{label: string, image: string | undefined, price: number, count: number}>();
 </script>
 
 <style lang="scss" scoped>

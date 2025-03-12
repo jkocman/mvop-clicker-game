@@ -7,6 +7,8 @@
                 :key="item.label"
                 :label="item.label" 
                 :image="item.image"
+                :price="item.price"
+                :count="item.count"
             />
         </section>
     </section>
@@ -15,17 +17,13 @@
 <script setup lang="ts">
 import ShopItem from '@/components/ShopItem.vue';
 import { useScoreStore } from '@/stores/scoreStore';
+import { useItemsStore } from '@/stores/shopItems';
 import { computed } from 'vue';
 
 const scoreStore = useScoreStore();
+const itemsStore = useItemsStore();
 
-const shopItems = [
-    { label: "Leg Helper", image: new URL("@/assets/img/shop/leg-helper.png", import.meta.url).href, requiredScore: 10 },
-    { label: "Click XP", image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href, requiredScore: 50 },
-    { label: "Stomach Helper", image: new URL("@/assets/img/shop/stomach-helper.png", import.meta.url).href, requiredScore: 100 },
-    { label: "Torso Helper", image: new URL("@/assets/img/shop/torso-helper.png", import.meta.url).href, requiredScore: 250 },
-    { label: "Head Helper", image: new URL("@/assets/img/shop/head-helper.png", import.meta.url).href, requiredScore: 2 },
-];
+const shopItems = itemsStore.items;
 
 const availableItems = computed(() => {
     return shopItems.filter(item => scoreStore.maxScore >= item.requiredScore);
