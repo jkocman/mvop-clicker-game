@@ -19,6 +19,8 @@ import { ref, onMounted, computed, watch } from "vue";
 import { useScoreStore } from "@/stores/scoreStore";
 import { useItemsStore } from "@/stores/shopItems";
 import { useTargetAnimation } from "@/assets/ts/targetAnimation";
+import { useHelperUpgrades } from "@/assets/ts/helperUpgrades";
+import { useMultiplayer } from "@/assets/ts/multiplayer";
 
 const target = ref<any>();
 const wrapper = ref<any>();
@@ -29,6 +31,8 @@ const bodypart = ref("");
 const scoreStore = useScoreStore();
 const itemsStore = useItemsStore();
 const animateTarget = useTargetAnimation(wrapper, target, bodypart);
+const multiplayer = useMultiplayer();
+
 
 const calculatePointsPositions = () => {
     if (!wrapper.value) return;
@@ -43,38 +47,6 @@ const calculatePointsPositions = () => {
     
     pointsPositions.value = bounds;
 };
-
-const helperUpgrades = () => {
-    setInterval(() => {
-        const legHelpers = itemsStore.items.find(item => item.label === "Leg Helper");
-        const stomachHelpers = itemsStore.items.find(item => item.label === "Stomach Helper");
-        const torsoHelpers = itemsStore.items.find(item => item.label === "Torso Helper");
-        const headHelpers = itemsStore.items.find(item => item.label === "Head Helper");
-        if (legHelpers) {
-            scoreStore.addPoints(legHelpers.count);
-        }
-        if (stomachHelpers) {
-            scoreStore.addPoints(stomachHelpers.count * 2);
-        }
-        if (torsoHelpers) {
-            scoreStore.addPoints(torsoHelpers.count * 3);
-        }
-        if (headHelpers) {
-            scoreStore.addPoints(headHelpers.count * 4);
-        }
-    }, 2000);
-}
-
-const multiplayer = computed(() => {
-    const clickXp = itemsStore.items.find(item => item.label === "Click XP")
-
-    if(clickXp?.count != 0 && clickXp){
-        return clickXp.count * 2
-    }
-    else{
-        return 1;
-    }
-});
 
 watch(multiplayer, () => {
     calculatePointsPositions();
@@ -101,7 +73,7 @@ const saveScore = () => {
 
 onMounted(() => {
     animateTarget.animateTarget();
-    helperUpgrades();
+    useHelperUpgrades();
     figureImage.value.onload = calculatePointsPositions;
     window.addEventListener("resize", calculatePointsPositions);
 });
