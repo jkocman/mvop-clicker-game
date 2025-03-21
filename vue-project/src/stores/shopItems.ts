@@ -11,6 +11,13 @@ export const useItemsStore = defineStore("items", () => {
             requiredScore: 0
         },
         {
+            label: "Lower Cooldown",
+            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            price: 100,
+            count: 0,
+            requiredScore: 300
+        },
+        {
             label: "Click XP",
             image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
             price: 100,

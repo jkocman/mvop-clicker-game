@@ -22,10 +22,10 @@ import { useScoreStore } from '@/stores/scoreStore';
 const itemsStore = useItemsStore();
 const scoreStore = useScoreStore();
 
-const props = defineProps<{label: string, image: string | undefined, price: number, count: number}>();
+const props = defineProps<{ label: string, image: string | undefined, price: number, count: number }>();
 
 const incrementCount = () => {
-    if(props.price <= scoreStore.totalScore){
+    if (props.price <= scoreStore.totalScore) {
         scoreStore.totalScore -= props.price;
         itemsStore.incrementCount(props.label);
 
@@ -33,7 +33,12 @@ const incrementCount = () => {
 }
 
 const buttonClass = computed(() => {
-    return props.price <= scoreStore.totalScore ? 'buy' : 'buy-cant';
+    if (props.price <= scoreStore.totalScore) {
+        return 'buy';
+    }
+    else {
+        return 'buy-cant'
+    }
 });
 
 </script>
@@ -114,7 +119,8 @@ const buttonClass = computed(() => {
             box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
             cursor: pointer;
         }
-        .buy-cant{
+
+        .buy-cant {
             font-size: map.get($font-sizes, "normal");
             background-color: gray;
             color: map.get($foreground-colors, "primary");

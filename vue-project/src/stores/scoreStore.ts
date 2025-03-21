@@ -1,19 +1,19 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
-export const useScoreStore = defineStore('score', {
-  state: () => ({
-    totalScore: 200000,
-    maxScore: 0
-  }),
-  actions: {
-    addPoints(points: number) {
-      this.totalScore += points;
-      if (this.totalScore > this.maxScore) {
-        this.maxScore = this.totalScore;
-      }
-    },
-    resetScore() {
-      this.totalScore = 0;
+export const useScoreStore = defineStore('score', () => {
+  const totalScore = ref(100000000000000);
+  const maxScore = ref(0);
+
+  const addPoints = (points: number) => {
+    totalScore.value += points;
+    if (totalScore.value > maxScore.value) {
+      maxScore.value = totalScore.value;
     }
   }
+  const resetScore = () => {
+    totalScore.value = 0;
+  }
+
+  return {totalScore, maxScore, addPoints, resetScore};
 })
