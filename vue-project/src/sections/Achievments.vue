@@ -1,6 +1,6 @@
 <template>
     <section class="achievment-container">
-        <h2>Achievments</h2>
+        <h2>Achievements</h2>
         <section class="achievments">
             <Achievment v-for="(label, index) in labels" :key="index" :label="label"></Achievment>
         </section>

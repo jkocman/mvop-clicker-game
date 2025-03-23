@@ -19,7 +19,7 @@ import { ref, onMounted, watch } from "vue";
 import { useScoreStore } from "@/stores/scoreStore";
 import { useTargetAnimation } from "@/assets/ts/targetAnimation";
 import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/ts/upgrades";
-import { useMultiplayer } from "@/assets/ts/multiplayer";
+import { useMultiplayer } from "@/assets/ts/multiplier";
 import { computed } from "@vue/reactivity";
 
 const target = ref<any>();
@@ -53,9 +53,22 @@ watch(multiplayer, () => {
 const canShoot = ref(true);
 const delay = ref(2000);
 
+const shootSound = new Audio("/sounds/loaded_shot_sound_effect.mp3");
+const cooldownSound = new Audio("/sounds/dry_shot_sound_effect.mp3");
+
+shootSound.volume = 0.2;
+cooldownSound.volume = 0.2;
+
 const saveScore = () => {
 
-    if (!canShoot.value) return;
+    if (!canShoot.value) {
+        cooldownSound.currentTime = 0;
+        cooldownSound.play();
+        return;
+    }
+
+    shootSound.currentTime = 0;
+    shootSound.play();
 
     canShoot.value = false;
     let points = 0;

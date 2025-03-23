@@ -6,8 +6,8 @@
                 <h1>Target <span>Shooter</span></h1>
             </section>
             <section class="button-container">
-                <Button label="Reset Game" type="main"></Button>
-                <Button @click="toggleHeader(false)" class="toggle-button-up" type="secondary">
+                <button class="reset-button">Reset Game</button>
+                <button @click="toggleHeader(false)" class="toggle-button">
                     <i class="fa-solid fa-angle-up"></i>
                 </Button>
             </section>
@@ -15,13 +15,12 @@
     </header>
     <section v-if="!isHeaderVisible" class="temporary-button">
         <section class="content">
-            <Button @click="toggleHeader(true)" class="toggle-button-up" type="secondary"><i class="fa-solid fa-angle-down"></i></Button>
+            <button @click="toggleHeader(true)" class="toggle-button"><i class="fa-solid fa-angle-down"></i></button>
         </section>
     </section>
 </template>
 
 <script setup lang="ts">
-import Button from "@/components/Button.vue";
 import { ref } from "vue";
 
 const isHeaderVisible = ref(true);
@@ -78,7 +77,28 @@ header {
                 }
             }
         }
+        .button-container{
+            .reset-button{
+                font-size: map.get($font-sizes, "normal");
+                background-color: map.get($background-colors, "tertiary");
+                color: map.get($foreground-colors, "primary");
+                padding: 10px;
+                border: 3px solid color.scale(map.get($background-colors, "tertiary"), $lightness: 20%);
+                border-radius: 5px;
+                box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
+                cursor: pointer;
+                margin-right: 20px;
+            }
+        }
     }
+}
+.toggle-button{
+    font-size: map.get($font-sizes, "small");
+    padding: 5px 10px;
+    background-color: transparent;
+    color: map.get($foreground-colors, "primary");
+    border: none;
+    cursor: pointer;
 }
 
 .temporary-button{

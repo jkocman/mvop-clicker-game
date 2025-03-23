@@ -1,6 +1,6 @@
 import { useScoreStore } from "@/stores/scoreStore";
 import { useItemsStore } from "@/stores/shopItems";
-import { useMultiplayer } from "./multiplayer";
+import { useMultiplayer } from "./multiplier";
 import { watch } from "vue";
 
 

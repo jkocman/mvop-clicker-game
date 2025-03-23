@@ -12,14 +12,7 @@ export const useItemsStore = defineStore("items", () => {
         },
         {
             label: "Lower Cooldown",
-            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
-            price: 100,
-            count: 0,
-            requiredScore: 300
-        },
-        {
-            label: "Click XP",
-            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            image: new URL("@/assets/img/shop/lower-cooldown.png", import.meta.url).href,
             price: 100,
             count: 0,
             requiredScore: 300
@@ -32,11 +25,25 @@ export const useItemsStore = defineStore("items", () => {
             requiredScore: 1000
         },
         {
+            label: "Click XP",
+            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            price: 100,
+            count: 0,
+            requiredScore: 300
+        },
+        {
             label: "Torso Helper",
             image: new URL("@/assets/img/shop/torso-helper.png", import.meta.url).href,
             price: 100,
             count: 0,
             requiredScore: 20000
+        },
+        {
+            label: "Head Slowdown",
+            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            price: 100,
+            count: 0,
+            requiredScore: 300
         },
         {
             label: "Head Helper",
