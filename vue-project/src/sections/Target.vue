@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from "vue";
 import { useScoreStore } from "@/stores/scoreStore";
+import { useDelayStore } from "@/stores/delay";
 import { useTargetAnimation } from "@/assets/ts/targetAnimation";
 import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/ts/upgrades";
 import { useMultiplayer } from "@/assets/ts/multiplier";
@@ -29,6 +30,7 @@ const pointsPositions = ref<{ value: number, top: string }[]>([]);
 const bodypart = ref("");
 
 const scoreStore = useScoreStore();
+const delayStore = useDelayStore();
 const animateTarget = useTargetAnimation(wrapper, target, bodypart);
 const multiplayer = useMultiplayer();
 
@@ -51,7 +53,6 @@ watch(multiplayer, () => {
 });
 
 const canShoot = ref(true);
-const delay = ref(2000);
 
 const shootSound = new Audio("/sounds/loaded_shot_sound_effect.mp3");
 const cooldownSound = new Audio("/sounds/dry_shot_sound_effect.mp3");
@@ -85,10 +86,11 @@ const saveScore = () => {
 
     points *= multiplayer.value;
     scoreStore.addPoints(points);
+    console.log(delayStore.delay);
 
     setTimeout(() => {
         canShoot.value = true;
-    }, delay.value)
+    }, delayStore.delay)
 }
 
 const buttonClass = computed(() => {
@@ -103,7 +105,7 @@ const buttonClass = computed(() => {
 onMounted(() => {
     animateTarget.animateTarget();
     useHelperUpgrades();
-    useCooldownUpgrade(delay);
+    useCooldownUpgrade();
     figureImage.value.onload = calculatePointsPositions;
     window.addEventListener("resize", calculatePointsPositions);
 });

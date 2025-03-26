@@ -52,16 +52,15 @@ export const useItemsStore = defineStore("items", () => {
             count: 0,
             requiredScore: 100000
         },
-
     ]);
+    const priceMultiplier = 1.2;
 
     const incrementCount = (label: string) => {
         const item = items.value.find(item => item.label === label);
         if (item) {
             item.count++;
-            item.price *= 4;
+            item.price = Math.round(item.price * priceMultiplier);
         }
     };
-
     return { items, incrementCount };
 });

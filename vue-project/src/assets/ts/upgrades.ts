@@ -1,6 +1,7 @@
 import { useScoreStore } from "@/stores/scoreStore";
 import { useItemsStore } from "@/stores/shopItems";
 import { useMultiplayer } from "./multiplier";
+import { useDelayStore } from "@/stores/delay";
 import { watch } from "vue";
 
 
@@ -50,12 +51,16 @@ export function useHelperUpgrades() {
     requestAnimationFrame(updatePoints);
 }
 
-export function useCooldownUpgrade(delay: any){
+export function useCooldownUpgrade(){
 
     const itemsStore = useItemsStore();
+    const delayStore = useDelayStore();
+    let lowByThis = 200;
 
-    watch(() => itemsStore.items.find(item => item.label === "Lower Cooldown")?.count, (newCount: any) => {
-        delay.value = 2000 - newCount * 200;
-        console.log(delay);
+    watch(() => itemsStore.items.find(item => item.label === "Lower Cooldown")?.count, () => {
+        delayStore.delay -= lowByThis
+        lowByThis -= Math.floor(lowByThis * 0.1);
+        console.log(lowByThis);
+        console.log(delayStore.delay);
     });
 }
