@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useScoreStore = defineStore('score', () => {
-  const totalScore = ref(0);
+  const totalScore = ref(15000);
   const maxScore = ref(0);
 
   const addPoints = (points: number) => {

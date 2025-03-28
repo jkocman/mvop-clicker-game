@@ -2,7 +2,7 @@
     <header v-if="isHeaderVisible">
         <section class="content">
             <section class="logo-container">
-                <img src="../assets/img/target.png" alt="">
+                <img src="/img/target-outlined.png" alt="">
                 <h1>Target <span>Shooter</span></h1>
             </section>
             <section class="button-container">

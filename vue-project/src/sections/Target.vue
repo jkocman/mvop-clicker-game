@@ -3,11 +3,11 @@
         <section class="target-section">
             <p>XP: <span>{{ scoreStore.totalScore }}</span></p>
             <div class="target-wrapper" ref="wrapper">
-                <img src="@/assets/img/clicker-guy.png" alt="" class="figure-image" ref="figureImage">
+                <img src="/img/clicker-guy.png" alt="" class="figure-image" ref="figureImage">
                 <p v-for="point in pointsPositions" :key="point.value" class="points" :style="{ top: point.top }">
                     {{ point.value }}
                 </p>
-                <img src="@/assets/img/target-outlined.png" alt="Target" class="target" ref="target">
+                <img src="/img/target-outlined.png" alt="Target" class="target" ref="target">
             </div>
             <button @click="saveScore()" :class="buttonClass" ref="shootButton">Shoot</button>
         </section>

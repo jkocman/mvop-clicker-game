@@ -26,7 +26,7 @@ defineProps<{ label: string }>();
         div{
             width: 45px;
             height: 45px;
-            background-image: url("../assets/img/achievment-questionmark.png");
+            background-image: url("/img/achievment-questionmark.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

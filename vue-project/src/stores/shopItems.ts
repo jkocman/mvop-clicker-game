@@ -5,49 +5,49 @@ export const useItemsStore = defineStore("items", () => {
     const items = ref([
         {
             label: "Leg Helper",
-            image: new URL("@/assets/img/shop/leg-helper.png", import.meta.url).href,
+            image: "/img/shop/leg-helper.png",
             price: 50,
             count: 0,
             requiredScore: 0
         },
         {
             label: "Lower Cooldown",
-            image: new URL("@/assets/img/shop/lower-cooldown.png", import.meta.url).href,
+            image: "/img/shop/lower-cooldown.png",
             price: 150,
             count: 0,
             requiredScore: 100
         },
         {
             label: "Stomach Helper",
-            image: new URL("@/assets/img/shop/stomach-helper.png", import.meta.url).href,
+            image: "/img/shop/stomach-helper.png",
             price: 380,
             count: 0,
             requiredScore: 300
         },
         {
             label: "Click XP",
-            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            image: "/img/shop/add-powerup.png",
             price: 800,
             count: 0,
             requiredScore: 700
         },
         {
             label: "Torso Helper",
-            image: new URL("@/assets/img/shop/torso-helper.png", import.meta.url).href,
+            image: "/img/shop/torso-helper.png",
             price: 1700,
             count: 0,
             requiredScore: 1500
         },
         {
             label: "Head Slowdown",
-            image: new URL("@/assets/img/shop/add-powerup.png", import.meta.url).href,
+            image: "/img/shop/stomach-helper.png",
             price: 3200,
             count: 0,
             requiredScore: 3000
         },
         {
             label: "Head Helper",
-            image: new URL("@/assets/img/shop/head-helper.png", import.meta.url).href,
+            image: "/img/shop/head-helper.png",
             price: 12000,
             count: 0,
             requiredScore: 10000
