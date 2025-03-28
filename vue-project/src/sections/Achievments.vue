@@ -18,7 +18,6 @@ const labels = ref([
     "Hidden",
     "All Helpers",
     "100k XP",
-    "Hidden",
     "100 Of One Upgrade",
     "All Upgrades",
     "Two Milion XP"
