@@ -18,9 +18,9 @@
 import { ref, onMounted, watch } from "vue";
 import { useScoreStore } from "@/stores/scoreStore";
 import { useDelayStore } from "@/stores/delay";
-import { useTargetAnimation } from "@/assets/ts/targetAnimation";
-import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/ts/upgrades";
-import { useMultiplayer } from "@/assets/ts/multiplier";
+import { useTargetAnimation } from "@/assets/composables/targetAnimation";
+import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/composables/upgrades";
+import { useMultiplayer } from "@/assets/composables/multiplier";
 import { computed } from "@vue/reactivity";
 
 const target = ref<any>();

@@ -40,7 +40,7 @@ export const useItemsStore = defineStore("items", () => {
         },
         {
             label: "Head Slowdown",
-            image: "/img/shop/stomach-helper.png",
+            image: "/img/shop/head-slowdown.png",
             price: 3200,
             count: 0,
             requiredScore: 3000
