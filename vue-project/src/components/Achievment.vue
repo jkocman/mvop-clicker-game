@@ -6,13 +6,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 defineProps<{ label: string }>();
 </script>
 
 <style lang="scss" scoped>
-    @use "../assets/variables" as *;
+    @use "@/assets/variables" as *;
     @use "sass:map";
     @use "sass:color";
 

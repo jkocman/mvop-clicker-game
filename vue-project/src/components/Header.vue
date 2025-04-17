@@ -6,6 +6,9 @@
                 <h1>Target <span>Shooter</span></h1>
             </section>
             <section class="button-container">
+                <button class="info-button" @click="router.push('/about')">
+                    <i class="fa-solid fa-info"></i>
+                </button>
                 <button class="reset-button">Reset Game</button>
                 <button @click="toggleHeader(false)" class="toggle-button">
                     <i class="fa-solid fa-angle-up"></i>
@@ -21,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/router";
 import { ref } from "vue";
 
 const isHeaderVisible = ref(true);
@@ -33,7 +37,7 @@ const toggleHeader = (visible: boolean) => {
 <style lang="scss" scoped>
 @use "sass:map";
 @use "sass:color";
-@use "../assets/variables.scss" as *;
+@use "@/assets/variables.scss" as *;
 
 
 header {
@@ -78,6 +82,10 @@ header {
             }
         }
         .button-container{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
             .reset-button{
                 font-size: map.get($font-sizes, "normal");
                 background-color: map.get($background-colors, "tertiary");
@@ -87,14 +95,23 @@ header {
                 border-radius: 5px;
                 box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
                 cursor: pointer;
-                margin-right: 20px;
+            }
+            .info-button{
+                font-size: map.get($font-sizes, "normal");
+                background-color: map.get($background-colors, "tertiary");
+                color: map.get($foreground-colors, "primary");
+                padding: 10px 17px;
+                border: 3px solid color.scale(map.get($background-colors, "tertiary"), $lightness: 20%);
+                border-radius: 50%;
+                box-shadow: 0 0 10px 3px rgba(180, 180, 180, 0.192);
+                cursor: pointer;
             }
         }
     }
 }
 .toggle-button{
     font-size: map.get($font-sizes, "small");
-    padding: 5px 10px;
+    padding: 0 5px;
     background-color: transparent;
     color: map.get($foreground-colors, "primary");
     border: none;

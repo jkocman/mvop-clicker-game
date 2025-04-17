@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { computed } from 'vue';
 import { useItemsStore } from '@/stores/shopItems';
 import { useScoreStore } from '@/stores/scoreStore';
 
@@ -44,7 +44,7 @@ const buttonClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/variables" as *;
+@use "@/assets/variables" as *;
 @use "sass:map";
 @use "sass:color";
 
