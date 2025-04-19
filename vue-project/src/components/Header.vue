@@ -1,7 +1,7 @@
 <template>
     <header v-if="isHeaderVisible">
         <section class="content">
-            <section class="logo-container">
+            <section class="logo-container" @click="router.push('/')">
                 <img src="/img/target-outlined.png" alt="">
                 <h1>Target <span>Shooter</span></h1>
             </section>
@@ -63,6 +63,7 @@ header {
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
 
             img {
                 width: 70px;

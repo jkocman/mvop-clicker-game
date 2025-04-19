@@ -22,6 +22,7 @@ import { useTargetAnimation } from "@/assets/composables/targetAnimation";
 import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/composables/upgrades";
 import { useMultiplayer } from "@/assets/composables/multiplier";
 import { computed } from "@vue/reactivity";
+import { useAchievementsStore } from "@/stores/achievments";
 
 const target = ref<any>();
 const wrapper = ref<any>();
@@ -33,6 +34,7 @@ const scoreStore = useScoreStore();
 const delayStore = useDelayStore();
 const animateTarget = useTargetAnimation(wrapper, target, bodypart);
 const multiplayer = useMultiplayer();
+const achievementStore = useAchievementsStore();
 
 const calculatePointsPositions = () => {
     if (!wrapper.value) return;
@@ -61,6 +63,7 @@ shootSound.volume = 0.2;
 cooldownSound.volume = 0.2;
 
 const saveScore = () => {
+    achievementStore.complete("First Shot");
 
     if (!canShoot.value) {
         cooldownSound.currentTime = 0;
@@ -98,7 +101,7 @@ const buttonClass = computed(() => {
         return 'shoot';
     }
     else {
-        return 'shoot-cant'
+        return 'shoot-cant';
     }
 });
 

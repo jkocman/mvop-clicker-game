@@ -1,13 +1,13 @@
 <template>
     <section class="panel-container">
-        <h2 class="panel-title">{{ title}}</h2>
-        <slot></slot>
+        <h2 v-if="heading" class="panel-title">{{ title}}</h2>
+            <slot></slot>
     </section>
 </template>
 
 <script lang="ts" setup>
 
-defineProps<{title: string}>();
+defineProps<{title: string, heading: boolean}>();
 </script>
 
 <style lang="scss" scoped>
