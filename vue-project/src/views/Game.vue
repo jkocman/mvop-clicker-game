@@ -5,6 +5,19 @@
             <Shop></Shop>
             <Achievments></Achievments>
             <img @click="hide()" :class="className" src="/img/hidden-cat.png" alt="">
+
+            <div 
+                v-for="(achievement, index) in achievementStore.completedRecently" 
+                :key="achievement.label" 
+                :style="{ 
+                    bottom: `${70 * index + 20}px`,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    position: 'fixed',
+                }"
+            >
+                <AchievementCompletion :name="achievement.label" :image="achievement.image" />
+            </div>
         </section>
     </main>
 </template>
@@ -17,11 +30,11 @@ import { useAchievementsStore } from "@/stores/achievments";
 import { ref } from 'vue';
 import AchievementCompletion from "@/components/AchievementCompletion.vue";
 
-const achievmentStore = useAchievementsStore();
+const achievementStore = useAchievementsStore();
 let className = ref('');
 
 const hide = () => {
-    achievmentStore.complete('Hidden');
+    achievementStore.complete('Hidden');
     className.value = 'hide';
 }
 </script>

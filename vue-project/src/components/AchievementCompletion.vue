@@ -1,62 +1,57 @@
 <template>
     <div class="achievement-box">
-      <img :src="image" alt="Achievement image" class="achievement-img" />
-      <p class="achievement-name">{{ name }}</p>
+        <img :src="image" alt="Achievement image" class="achievement-img" />
+        <p class="achievement-name">{{ name }} Unlocked</p>
     </div>
-  </template>
+</template>
   
-  <script lang="ts" setup>
-  defineProps<{
-    name: string
-    image: string
-  }>()
-  </script>
+<script lang="ts" setup>
+    defineProps<{
+        name: string
+        image: string
+    }>()
+</script>
   
-  <style lang="scss" scoped>
-  .achievement-box {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.85);
-    border: 2px solid red;
-    border-radius: 10px;
-    padding: 12px 20px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-    box-shadow: 0 0 15px red;
-    animation: fadeInOut 3s ease-in-out forwards;
-  }
+<style lang="scss" scoped>
+    @use "../assets/variables" as *;
+    @use "sass:map";
   
-  .achievement-img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .achievement-name {
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, 20px);
+    .achievement-box {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(70, 70, 70, 0.753);
+        border: 2px solid map.get($foreground-colors, "secondary");
+        border-radius: 10px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: map.get($foreground-colors, "primary");
+        box-shadow: 0 0 15px map.get($foreground-colors, "secondary");
+        animation: fadeIn 0.5s ease-out forwards;
     }
-    10% {
-      opacity: 1;
-      transform: translate(-50%, 0);
+  
+    .achievement-img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
     }
-    90% {
-      opacity: 1;
+  
+    .achievement-name {
+        font-weight: bold;
+        font-size: map.get($font-sizes, "normal");
     }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -20px);
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, 20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     }
-  }
-  </style>
+</style>
   

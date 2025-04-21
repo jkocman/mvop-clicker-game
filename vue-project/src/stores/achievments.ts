@@ -53,19 +53,22 @@ export const useAchievementsStore = defineStore("achievments", () => {
     const completedRecently = ref<{ label: string; image: string }[]>([]);
 
     function complete(label: string) {
-      const achievement = achievements.value.find((a) => a.label === label);
-      if (achievement && !achievement.completed) {
-        achievement.completed = true;
-        completedRecently.value.unshift({ label, image: achievement.image });
-        setTimeout(() => {
-          completedRecently.value.pop();
-        }, 3000);
-      }
+        const achievement = achievements.value.find(a => a.label === label);
+        if (achievement && !achievement.completed) {
+            achievement.completed = true;
+            // Přidáme achievement do completedRecently
+            completedRecently.value.push({ label: achievement.label, image: achievement.image });
+
+            // Po 3 sekundách achievement odstraníme
+            setTimeout(() => {
+                completedRecently.value = completedRecently.value.filter(a => a.label !== achievement.label);
+            }, 3000); // Nastavuje dobu zobrazení na 3 sekundy
+        }
     }
 
     return {
         achievements,
         complete,
         completedRecently,
-      }
+    }
 });
