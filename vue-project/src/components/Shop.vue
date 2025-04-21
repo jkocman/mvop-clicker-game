@@ -1,5 +1,5 @@
 <template>
-    <PanelContainer title="Shop" :heading="true">
+    <PanelContainer title="Shop" :heading="true" span="2">
         <ShopItem 
                 v-for="item in availableItems" 
                 :key="item.label"

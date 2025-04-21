@@ -30,6 +30,8 @@ const figureImage = ref<any>();
 const pointsPositions = ref<{ value: number, top: string }[]>([]);
 const bodypart = ref("");
 
+let head: boolean, torso: boolean, stomach: boolean, legs: boolean = false;
+
 const scoreStore = useScoreStore();
 const delayStore = useDelayStore();
 const animateTarget = useTargetAnimation(wrapper, target, bodypart);
@@ -49,7 +51,6 @@ const calculatePointsPositions = () => {
 
     pointsPositions.value = bounds;
 };
-
 watch(multiplayer, () => {
     calculatePointsPositions();
 });
@@ -79,12 +80,20 @@ const saveScore = () => {
 
     if (bodypart.value === "head") {
         points = 4;
+        head = true;
     } else if (bodypart.value === "torso") {
         points = 3;
+        torso = true;
     } else if (bodypart.value === "stomach") {
         points = 2;
+        stomach = true;
     } else if (bodypart.value === "legs") {
         points = 1;
+        legs = true;
+    }
+
+    if(head && torso && stomach && legs){
+        achievementStore.complete('All Parts');
     }
 
     points *= multiplayer.value;
@@ -181,15 +190,15 @@ onMounted(() => {
                 }
 
                 @media (max-height: 785px) {
-                    width: 50px;
+                    width: 55px;
                 }
 
                 @media (max-height: 695px) {
-                    width: 45px;
+                    width: 50px;
                 }
 
                 @media (max-height: 610px) {
-                    width: 40px;
+                    width: 45px;
                 }
             }
 

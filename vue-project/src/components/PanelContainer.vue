@@ -1,5 +1,5 @@
 <template>
-    <section class="panel-container">
+    <section class="panel-container" :style="`grid-row: span ${span}`">
         <h2 v-if="heading" class="panel-title">{{ title}}</h2>
             <slot></slot>
     </section>
@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 
-defineProps<{title: string, heading: boolean}>();
+defineProps<{title: string, heading: boolean, span: string}>();
 </script>
 
 <style lang="scss" scoped>
@@ -16,7 +16,6 @@ defineProps<{title: string, heading: boolean}>();
 @use "sass:color";
 
 .panel-container{
-    grid-row: span 2;
     border-radius: 20px;
     background-color: map.get($background-colors, "secondary");
     padding: 20px;

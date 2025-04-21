@@ -1,5 +1,5 @@
 <template>
-    <PanelContainer title="Achievments" :heading="true">
+    <PanelContainer title="Achievments" :heading="true" span="1">
         <section class="achievments">
             <Achievment v-for="achievement in achievements" :key="achievement.label" :label="achievement.label"
                 :completed="achievement.completed" :image="achievement.image">

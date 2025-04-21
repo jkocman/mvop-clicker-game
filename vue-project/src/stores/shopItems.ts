@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { useAchievementsStore } from "./achievments";
 
 export const useItemsStore = defineStore("items", () => {
     const items = ref([
@@ -54,12 +55,38 @@ export const useItemsStore = defineStore("items", () => {
         },
     ]);
     const priceMultiplier = 1.2;
+    const achievementStore = useAchievementsStore();
 
     const incrementCount = (label: string) => {
         const item = items.value.find(item => item.label === label);
-        if (item) {
+        if(item) {
             item.count++;
             item.price = Math.round(item.price * priceMultiplier);
+        }
+        if(items.value.some(i => i.count >= 1)) {
+            achievementStore.complete('New Upgrade');
+        }
+        if(items.value.some(i => i.count >= 50)) {
+            achievementStore.complete('50 Of One Upgrade');
+        }
+        if(items.value.every(i => i.count >= 1)){
+            achievementStore.complete('All Upgrades');
+        }
+
+        const helperLabels = [
+            "Leg Helper",
+            "Stomach Helper",
+            "Torso Helper",
+            "Head Helper"
+        ];
+    
+        const hasAllHelpers = helperLabels.every(helperLabel => {
+            const helperItem = items.value.find(item => item.label === helperLabel);
+            return helperItem && helperItem.count >= 1;
+        });
+    
+        if (hasAllHelpers) {
+            achievementStore.complete('All Helpers');
         }
     };
     return { items, incrementCount };

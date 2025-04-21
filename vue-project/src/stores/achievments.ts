@@ -34,7 +34,7 @@ export const useAchievementsStore = defineStore("achievments", () => {
             image: "/img/idk.png"
         },
         {
-            label: "100 Of One Upgrade",
+            label: "50 Of One Upgrade",
             completed: false,
             image: "/img/idk.png"
         },
@@ -50,13 +50,22 @@ export const useAchievementsStore = defineStore("achievments", () => {
         },
     ]);
 
+    const completedRecently = ref<{ label: string; image: string }[]>([]);
+
     function complete(label: string) {
-        const achievement = achievements.value.find((a) => a.label === label)
-        if (achievement) achievement.completed = true
+      const achievement = achievements.value.find((a) => a.label === label);
+      if (achievement && !achievement.completed) {
+        achievement.completed = true;
+        completedRecently.value.unshift({ label, image: achievement.image });
+        setTimeout(() => {
+          completedRecently.value.pop();
+        }, 3000);
+      }
     }
 
     return {
         achievements,
-        complete
+        complete,
+        completedRecently,
       }
 });

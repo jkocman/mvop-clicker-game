@@ -4,6 +4,7 @@
             <Target></Target>
             <Shop></Shop>
             <Achievments></Achievments>
+            <img @click="hide()" :class="className" src="/img/hidden-cat.png" alt="">
         </section>
     </main>
 </template>
@@ -12,6 +13,17 @@
 import Target from "../components/Target.vue";
 import Shop from "@/components/Shop.vue";
 import Achievments from "@/components/Achievments.vue";
+import { useAchievementsStore } from "@/stores/achievments";
+import { ref } from 'vue';
+import AchievementCompletion from "@/components/AchievementCompletion.vue";
+
+const achievmentStore = useAchievementsStore();
+let className = ref('');
+
+const hide = () => {
+    achievmentStore.complete('Hidden');
+    className.value = 'hide';
+}
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +62,16 @@ main{
         }
         @media (max-height: 610px){
             grid-template-rows: 130px 130px 130px;
+        }
+        img{
+            position: fixed;
+            top: 200px;
+            left: -40px;
+            height: 100px;
+            transform: rotate(60deg);
+        }
+        .hide{
+            display: none;
         }
     }
 }
