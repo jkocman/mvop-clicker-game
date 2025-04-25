@@ -3,8 +3,8 @@ import { ref, watch } from 'vue';
 import { useAchievementsStore } from './achievments';
 
 export const useScoreStore = defineStore('score', () => {
-  const totalScore = ref(1000000000000000);
-  const maxScore = ref(0);
+  const totalScore = ref(parseInt(localStorage.getItem('totalScore') || '0'));
+  const maxScore = ref(parseInt(localStorage.getItem('maxScore') || '0'));
 
   const achievementsStore = useAchievementsStore();
 
@@ -20,12 +20,18 @@ export const useScoreStore = defineStore('score', () => {
   }
 
   watch(totalScore, (newScore) => {
+    localStorage.setItem('totalScore', newScore.toString());
+
     if (newScore >= 100000) {
       achievementsStore.complete('100k XP');
     }
     if(newScore >= 2000000){
       achievementsStore.complete('2 Milion XP')
     }
+  });
+
+  watch(maxScore, (newMax) => {
+    localStorage.setItem('maxScore', newMax.toString());
   });
 
   return {totalScore, maxScore, addPoints, resetScore};
