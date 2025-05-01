@@ -6,7 +6,7 @@
                 <h1>Target <span>Shooter</span></h1>
             </section>
             <section class="button-container">
-                <button class="info-button" @click="router.push('/about')">
+                <button class="info-button" @click="infoPush()">
                     <i class="fa-solid fa-info"></i>
                 </button>
                 <button class="reset-button">Reset Game</button>
@@ -26,11 +26,20 @@
 <script setup lang="ts">
 import router from "@/router";
 import { ref } from "vue";
+import { useAchievementsStore } from "@/stores/achievments";
 
+const achievmentStore = useAchievementsStore();
 const isHeaderVisible = ref(true);
+
+const infoPush = () => {
+    achievmentStore.complete("Get Information");
+    router.push('/about')
+}
+
 
 const toggleHeader = (visible: boolean) => {
     isHeaderVisible.value = visible;
+    achievmentStore.complete("Max Focus");
 };
 </script>
 

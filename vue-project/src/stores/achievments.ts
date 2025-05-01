@@ -48,6 +48,21 @@ export const useAchievementsStore = defineStore("achievments", () => {
             completed: false,
             image: "/img/achievements/2m.png"
         },
+        {
+            label: "Get Information",
+            completed: false,
+            image: "/img/achievements/2m.png"
+        },
+        {
+            label: "2000 Shots",
+            completed: false,
+            image: "/img/achievements/2m.png"
+        },
+        {
+            label: "Max Focus",
+            completed: false,
+            image: "/img/achievements/2m.png"
+        },
     ]);
     
     const saved = localStorage.getItem("completedAchievements");

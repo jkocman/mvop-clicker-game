@@ -21,7 +21,7 @@
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(70, 70, 70, 0.753);
+        background: map.get($background-colors, "primary");
         border: 2px solid map.get($foreground-colors, "secondary");
         border-radius: 10px;
         padding: 10px 20px;

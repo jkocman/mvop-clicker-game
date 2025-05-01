@@ -1,7 +1,7 @@
 <template>
     <main>
         <section class="content">
-            <PanelContainer title="Target" :heading="true" class="panel">
+            <InfoContainer title="Target" :heading="true" class="panel">
                 <section class="article-content">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -11,8 +11,8 @@
                     </p>
                     <img class="image1" src="/img/ilustration-image1.png" alt="">
                 </section>
-            </PanelContainer>
-            <PanelContainer title="Shop" :heading="true">
+            </InfoContainer>
+            <InfoContainer title="Shop" :heading="true">
                 <section class="article-content">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -22,8 +22,8 @@
                     </p>
                     <img class="image2" src="/img/ilustration-image2.png" alt="">
                 </section>
-            </PanelContainer>
-            <PanelContainer title="Achievments" :heading="true">
+            </InfoContainer>
+            <InfoContainer title="Achievments" :heading="true">
                 <section class="article-content">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -33,13 +33,13 @@
                     </p>
                     <img class="image3" src="/img/ilustration-image3.png" alt="">
                 </section>
-            </PanelContainer>
+            </InfoContainer>
         </section>
     </main>
 </template>
 
 <script lang="ts" setup>
-import PanelContainer from "@/components/PanelContainer.vue";
+import InfoContainer from '@/components/InfoContainer.vue';
 </script>
 
 <style lang="scss" scoped>
