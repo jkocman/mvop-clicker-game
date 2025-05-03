@@ -9,7 +9,7 @@
                 <button class="info-button" @click="infoPush()">
                     <i class="fa-solid fa-info"></i>
                 </button>
-                <button class="reset-button">Reset Game</button>
+                <button class="reset-button" @click="resetGame()">Reset Game</button>
                 <button @click="toggleHeader(false)" class="toggle-button">
                     <i class="fa-solid fa-angle-up"></i>
                 </Button>
@@ -41,6 +41,11 @@ const toggleHeader = (visible: boolean) => {
     isHeaderVisible.value = visible;
     achievmentStore.complete("Max Focus");
 };
+
+const resetGame = () => {
+    localStorage.clear();
+    location.reload();
+}
 </script>
 
 <style lang="scss" scoped>

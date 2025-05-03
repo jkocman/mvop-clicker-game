@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import { useAchievementsStore } from './achievments';
+import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/composables/upgrades";
+
+let initialized = false;
 
 export const useScoreStore = defineStore('score', () => {
   const totalScore = ref(parseInt(localStorage.getItem('totalScore') || '0'));
@@ -19,6 +22,13 @@ export const useScoreStore = defineStore('score', () => {
     totalScore.value = 0;
   }
 
+  const initUpgrades = () => {
+    if (initialized) return;
+    useHelperUpgrades();
+    useCooldownUpgrade();
+    initialized = true;
+  };
+
   watch(totalScore, (newScore) => {
     localStorage.setItem('totalScore', newScore.toString());
 
@@ -34,5 +44,5 @@ export const useScoreStore = defineStore('score', () => {
     localStorage.setItem('maxScore', newMax.toString());
   });
 
-  return {totalScore, maxScore, addPoints, resetScore};
+  return {totalScore, maxScore, addPoints, resetScore, initUpgrades};
 })

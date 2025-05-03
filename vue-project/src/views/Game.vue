@@ -18,6 +18,8 @@
             >
                 <AchievementCompletion :name="achievement.label" :image="achievement.image" />
             </div>
+
+            <BonusCard></BonusCard>
         </section>
     </main>
 </template>
@@ -26,8 +28,9 @@
 import Target from "../components/Target.vue";
 import Shop from "@/components/Shop.vue";
 import Achievments from "@/components/Achievments.vue";
+import BonusCard from "@/components/BonusCard.vue";
 import { useAchievementsStore } from "@/stores/achievments";
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import AchievementCompletion from "@/components/AchievementCompletion.vue";
 
 const achievementStore = useAchievementsStore();
@@ -36,7 +39,15 @@ let className = ref('');
 const hide = () => {
     achievementStore.complete('Hidden');
     className.value = 'hide';
+    localStorage.setItem('catHidden', 'true');
 }
+
+onMounted(() => {
+    const alreadyHidden = localStorage.getItem('catHidden');
+    if (alreadyHidden === 'true') {
+        className.value = 'hide';
+    }
+});
 </script>
 
 <style lang="scss" scoped>

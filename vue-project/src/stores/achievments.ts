@@ -19,24 +19,24 @@ export const useAchievementsStore = defineStore("achievments", () => {
             image: "/img/achievements/all-parts.webp"
         },
         {
+            label: "Get Information",
+            completed: false,
+            image: "/img/achievements/circle-info-solid.svg"
+        },
+        {
+            label: "Max Focus",
+            completed: false,
+            image: "/img/achievements/angle-down-solid.svg"
+        },
+        {
             label: "Hidden",
             completed: false,
             image: "/img/achievements/hidden-cat.png"
         },
         {
-            label: "All Helpers",
-            completed: false,
-            image: "/img/achievements/all-helpers.png"
-        },
-        {
             label: "100k XP",
             completed: false,
-            image: "/img/achievements/100k.png"
-        },
-        {
-            label: "50 Of One Upgrade",
-            completed: false,
-            image: "/img/idk.png"
+            image: "/img/achievements/star-solid.svg"
         },
         {
             label: "All Upgrades",
@@ -44,24 +44,24 @@ export const useAchievementsStore = defineStore("achievments", () => {
             image: "/img/achievements/circle-up-solid.svg"
         },
         {
-            label: "2 Milion XP",
+            label: "All Helpers",
             completed: false,
-            image: "/img/achievements/2m.png"
+            image: "/img/achievements/all-helpers.png"
         },
         {
-            label: "Get Information",
+            label: "50 Of One Upgrade",
+            completed: false,
+            image: "/img/50-powerups.png"
+        },
+        {
+            label: "2 Milion XP",
             completed: false,
             image: "/img/achievements/2m.png"
         },
         {
             label: "2000 Shots",
             completed: false,
-            image: "/img/achievements/2m.png"
-        },
-        {
-            label: "Max Focus",
-            completed: false,
-            image: "/img/achievements/2m.png"
+            image: "/img/achievements/2k.png"
         },
     ]);
     

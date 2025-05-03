@@ -19,7 +19,6 @@ import { ref, onMounted, watch } from "vue";
 import { useScoreStore } from "@/stores/scoreStore";
 import { useDelayStore } from "@/stores/delay";
 import { useTargetAnimation } from "@/assets/composables/targetAnimation";
-import { useHelperUpgrades, useCooldownUpgrade } from "@/assets/composables/upgrades";
 import { useMultiplayer } from "@/assets/composables/multiplier";
 import { computed } from "@vue/reactivity";
 import { useAchievementsStore } from "@/stores/achievments";
@@ -37,6 +36,8 @@ const delayStore = useDelayStore();
 const animateTarget = useTargetAnimation(wrapper, target, bodypart);
 const multiplayer = useMultiplayer();
 const achievementStore = useAchievementsStore();
+
+const shotCount = ref(0);
 
 const calculatePointsPositions = () => {
     if (!wrapper.value) return;
@@ -100,6 +101,11 @@ const saveScore = () => {
     scoreStore.addPoints(points);
     console.log(delayStore.delay);
 
+    shotCount.value++;
+    if (shotCount.value === 2000) {
+        achievementStore.complete('2000 Shots');
+    }
+
     setTimeout(() => {
         canShoot.value = true;
     }, delayStore.delay)
@@ -116,8 +122,7 @@ const buttonClass = computed(() => {
 
 onMounted(() => {
     animateTarget.animateTarget();
-    useHelperUpgrades();
-    useCooldownUpgrade();
+    scoreStore.initUpgrades();
     figureImage.value.onload = calculatePointsPositions;
     window.addEventListener("resize", calculatePointsPositions);
 });

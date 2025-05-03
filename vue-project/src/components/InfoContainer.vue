@@ -2,6 +2,7 @@
     <section class="panel-container">
         <h2 v-if="heading" class="panel-title" @click="toggle">
             {{ title }}
+            <i class="fa-solid fa-angle-down" :class="{ rotated: isOpen }"></i>
         </h2>
         <transition name="slide-fade">
             <div v-show="isOpen" class="panel-content">
@@ -14,7 +15,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-defineProps<{title: string, heading: boolean}>()
+defineProps<{ title: string, heading: boolean }>()
 
 const isOpen = ref(false)
 
@@ -29,27 +30,35 @@ function toggle() {
 
 .panel-container {
     border-radius: 20px;
-    background-color: map.get($background-colors, "secondary");
+    background-color: map.get($background-colors, "primary");
     padding: 20px;
-    box-shadow: 0 0 10px 1px rgba(180, 180, 180, 0.192);
     overflow-y: auto;
     scrollbar-width: none;
 
-    @media(max-width: 1445px){
+    @media (max-width: 1445px) {
         margin-right: 20px;
     }
-    @media(max-width: 780px){
+    @media (max-width: 780px) {
         margin-left: 20px;
     }
 
     .panel-title {
         text-align: center;
-        font-size: map.get($font-sizes, "heading");
+        font-size: map.get($font-sizes, "extra-large");
         color: map.get($foreground-colors, "primary");
         border-bottom: 2px solid map.get($foreground-colors, "secondary");
         padding-bottom: 5px;
         cursor: pointer;
         user-select: none;
+
+        i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .rotated {
+            transform: rotate(180deg);
+        }
     }
 
     .panel-content {
@@ -62,16 +71,20 @@ function toggle() {
     display: none;
 }
 
-.slide-fade-enter-active, .slide-fade-leave-active {
+.slide-fade-enter-active,
+.slide-fade-leave-active {
     transition: max-height 0.4s ease, opacity 0.4s ease;
 }
-.slide-fade-enter-from, .slide-fade-leave-to {
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
     max-height: 0;
     opacity: 0;
 }
-.slide-fade-enter-to, .slide-fade-leave-from {
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
     max-height: 1000px;
     opacity: 1;
 }
 </style>
-  
