@@ -3,6 +3,7 @@ import { useItemsStore } from "@/stores/shopItems";
 import { useMultiplayer } from "./multiplier";
 import { useDelayStore } from "@/stores/delay";
 import { watch } from "vue";
+import { storeToRefs } from 'pinia';
 
 
 export function useHelperUpgrades() {
@@ -51,16 +52,24 @@ export function useHelperUpgrades() {
     requestAnimationFrame(updatePoints);
 }
 
-export function useCooldownUpgrade(){
-
+export function useCooldownUpgrade() {
     const itemsStore = useItemsStore();
     const delayStore = useDelayStore();
-    let lowByThis = 200;
 
-    watch(() => itemsStore.items.find(item => item.label === "Lower Cooldown")?.count, () => {
-        delayStore.delay -= lowByThis
-        lowByThis -= Math.floor(lowByThis * 0.1);
-        console.log(lowByThis);
-        console.log(delayStore.delay);
-    });
+    const { delay, lowByThis } = storeToRefs(delayStore);
+
+    watch(
+        () => itemsStore.items.find(item => item.label === "Lower Cooldown")?.count,
+        () => {
+
+            if(delay.value < 0){
+                delay.value = 0;
+                lowByThis.value = 0;
+                return;
+            }
+
+            delay.value -= lowByThis.value;
+            lowByThis.value -= Math.floor(lowByThis.value * 0.1);
+        }
+    );
 }

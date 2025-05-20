@@ -1,7 +1,7 @@
 <template>
     <div v-if="showBonus" class="overlay" @click="closeBonus">
         <div class="bonus-card" @click.stop>
-        Vítej zpět! Získal jsi {{ offlineBonus }} XP, zatímco jsi byl pryč.
+            <p>Welcome Back, you got {{ offlineBonus }} XP, while you was away.</p>
         </div>
     </div>
 </template>

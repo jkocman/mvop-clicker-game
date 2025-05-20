@@ -5,8 +5,8 @@ export function useTargetAnimation(wrapper: any, target: any, bodypart: any) {
     let direction = 1;
     let lastUpdate = performance.now();
 
-    const baseSpeed = 5;
-    const slowdownPerUpgrade = 0.25;
+    const baseSpeed = 8;
+    const slowdownPerUpgrade = 2;
     //https://chatgpt.com/share/67e6b5cd-18c8-8011-8cf4-f1a2fad6ee72
     const frameTime = 1000 / 60;
 
