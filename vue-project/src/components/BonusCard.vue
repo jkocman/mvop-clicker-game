@@ -1,28 +1,53 @@
 <template>
-    <div v-if="showBonus" class="overlay" @click="closeBonus">
-        <div class="bonus-card" @click.stop>
+    <article v-if="showBonus" class="overlay" @click="closeBonus">
+        <section class="bonus-card" @click.stop>
             <p>Welcome Back, you got {{ offlineBonus }} XP, while you was away.</p>
-        </div>
-    </div>
+        </section>
+    </article>
+    <article v-if="showCompletion" class="overlay" @click="closeBonus">
+        <section class="bonus-card" @click.stop>
+            <p>Completed!</p>
+        </section>
+    </article>
 </template>
 
 <script lang="ts" setup>
 import { useOfflineBonus } from "@/assets/composables/offlineXP";
 import { ref, watch } from "vue";
+import { useAchievementsStore } from "@/stores/achievments";
 
 const { offlineBonus, bonusGranted } = useOfflineBonus();
+const achievementsStore = useAchievementsStore();
+
 const showBonus = ref(false);
+const showCompletion = ref(false);
 
 watch(bonusGranted, (newVal) => {
-if (newVal) {
+  if (newVal) {
     showBonus.value = true;
-}
+  }
 });
 
+watch(
+  () => achievementsStore.achievements,
+  (achievements) => {
+    if (
+      achievements.length > 0 &&
+      achievements.every((a) => a.completed)
+    ) {
+      showCompletion.value = true;
+    }
+  },
+  { deep: true, immediate: true }
+);
+
+// Zavírání overlaye
 const closeBonus = () => {
-showBonus.value = false;
+  showBonus.value = false;
+  showCompletion.value = false;
 };
 </script>
+
 
 <style lang="scss" scoped>
 @use "@/assets/variables" as *;
