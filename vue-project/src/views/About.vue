@@ -30,6 +30,7 @@
                             Use your XP to buy upgrades that enhance your shooting skills and automate gameplay. Here's what you can get:
                         </p>
                         <ul>
+                            <li>Leg Helper – Automatically shoots the leg area over time to generate passive XP.</li>
                             <li>Lower Cooldown – Reduces the time between shots so you can shoot more often.</li>
                             <li>Stomach Helper – Automatically shoots the stomach area over time to generate passive XP.</li>
                             <li>Click XP – Increases the XP you earn for each manual click, no matter where you hit.</li>

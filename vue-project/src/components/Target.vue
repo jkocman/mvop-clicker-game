@@ -123,7 +123,6 @@ const buttonClass = computed(() => {
 onMounted(() => {
     animateTarget.animateTarget();
     scoreStore.initUpgrades();
-    scoreStore.addPoints(2000000000);
     figureImage.value.onload = calculatePointsPositions;
     window.addEventListener("resize", calculatePointsPositions);
 });
